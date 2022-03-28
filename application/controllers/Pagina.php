@@ -15,10 +15,17 @@ class Pagina extends CI_Controller {
 		//o helper pode ser feito aqui também
 		//$this->load->helper('url');//carrega so em index
 
-
 		//titulo dinamico
 		$dados['titulo'] = 'Manyminds';
 		//chama a view principal
 		$this->load->view('home',$dados);
+	}
+
+	//para acessar uma pagina sobre
+	public function sobre(){
+		//titulo dinamico
+		$dados['titulo'] = 'Sobre - Manyminds';
+		//chama a view
+		$this->load->view('sobre',$dados);
 	}
 }
