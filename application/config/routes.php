@@ -54,3 +54,21 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 /*cria uma rota especifica*/
 $route['sobre'] = 'pagina/sobre';
+
+/*rotas dos colaboradores*/
+
+//cirar, editar um novo colaborador
+$route['cadastro'] = 'colaboradores/cadastrar';
+$route['editar'] = 'colaboradores/editar';
+$route['editar/(:num)'] = 'colaborador/editar/$1';
+
+
+//acessar os colaboradores
+$route['post'] = 'pagina';
+
+$route['post/(:num)'] = 'pagina/post/$1';
+
+//login
+$route['login'] = 'setup/login';
+
+$route['teste'] = 'colaboradores/teste';

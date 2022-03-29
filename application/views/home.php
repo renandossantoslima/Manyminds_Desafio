@@ -5,7 +5,27 @@
 
 ?>
 
-<h1>Home principal</h1>
+
+	<h1>Home</h1>
+
+	<?php	
+		//mostrar os colaboradores
+		if(isset($colaboradores) && sizeof($colaboradores) > 0){
+	?>
+
+		<?php
+			//foreach para os colaboradores
+			foreach ($colaboradores as $key => $value) {//inicio foreach
+		?>
+
+			<p><?php echo $value->descricao ?></p>
+			<hr>
+
+			<?php }//fim foreach ?>
+
+	<?php }else{
+			echo 'Nenhum colaborador!';
+	} ?>
 
 
 <?php

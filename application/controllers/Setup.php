@@ -1,15 +1,21 @@
 <?php
+
+/*
+	Responsavel por excutar os metodos de login e cadastro de setup
+
+*/
+
 //nome para salvalr um controller é sempre a primeira letra maiuscula
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 //o nome dos arquivos e classes devem ser os mesmos
-class Pagina extends CI_Controller {
+class Setup extends CI_Controller {
 
 	//construtor constroi tudo o que precisa nos projetos
 	function __construct(){
 		parent::__construct();
-		$this->load->helper('url');//carrega em todo o controller 
-		$this->load->model('colaboradores_model','colaboradores');
+		$this->load->helper('form');
+		$this->load->library('form_validation')
 	}
 
 	public function index(){
@@ -18,17 +24,7 @@ class Pagina extends CI_Controller {
 
 		//titulo dinamico
 		$dados['titulo'] = 'Manyminds';
-		//pega as informações do banco
-		$dados['colaboradores'] = $this->colaboradores->selectAll();
 		//chama a view principal
 		$this->load->view('home',$dados);
-	}
-
-	//para acessar uma pagina sobre
-	public function sobre(){
-		//titulo dinamico
-		$dados['titulo'] = 'Sobre - Manyminds';
-		//chama a view
-		$this->load->view('sobre',$dados);
 	}
 }
