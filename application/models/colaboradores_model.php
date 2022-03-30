@@ -22,6 +22,16 @@ class Colaboradores_model extends CI_Model {
 		return $this->db->insert_id();
 	}
 
+	//editar
+	public function editar($dados){
+		//faz um where na tabela
+		$this->db->where('id',$dados['id']);
+		//para não atualizar o id
+		unset($dados['id']);
+		$this->db->update('teste',$dados);
+		return $this->db->affected_rows();
+	}
+
 	//Seleciona tudo da tabela
 	public function selectAll($limit = 0,$offset =0){
 		//verifico o limit
@@ -35,6 +45,18 @@ class Colaboradores_model extends CI_Model {
 			}
 
 		}//if limit
+	}
+
+	//Seleciona um resultado
+	public function selectOne($id=0){
+		$this->db->where('id',$id);
+		$query = $this->db->get('teste');
+		if($query->num_rows() > 0){
+			$linha = $query->row();
+			return $linha;
+		}else{
+			return null;
+		}
 	}
 
 

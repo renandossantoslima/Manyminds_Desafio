@@ -5,9 +5,14 @@
 
 ?>
 
-<h1>Editar colaborador</h1>
-<p>Nome do colaborador</p>
-<input type="text" name="colaborador">
+	<h1>Editar colaborador</h1>
+	<?php
+		echo form_open();//coneço do form
+		echo form_label('Nome do colaborador','colaborador');
+		echo form_input('colaborador',$colaboradores->descricao);
+		echo form_submit('enviar','Salvar');
+		echo form_close();//fim do form
+		?>
 
 
 <?php

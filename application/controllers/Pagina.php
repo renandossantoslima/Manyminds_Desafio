@@ -31,4 +31,24 @@ class Pagina extends CI_Controller {
 		//chama a view
 		$this->load->view('sobre',$dados);
 	}
+
+	public function post(){
+		//verifica se foi passado o id
+		$id = $this->uri->segment(2);
+		if($id > 0){
+			if($colaboradores = $this->colaboradores->selectOne($id)){
+				$dados['colaboradores'] = $colaboradores->descricao;
+			}else{
+				$dados['colaboradores'] = 'Não encontrado';
+			}
+
+		}else{
+			redirect(base_url(),'refresh');
+		}
+
+		$dados['titulo'] = 'Colaboradores';
+		//chama view
+		$this->load->view('post',$dados);
+		
+	}
 }

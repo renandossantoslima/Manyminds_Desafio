@@ -60,7 +60,7 @@ $route['sobre'] = 'pagina/sobre';
 //cirar, editar um novo colaborador
 $route['cadastro'] = 'colaboradores/cadastrar';
 $route['editar'] = 'colaboradores/editar';
-$route['editar/(:num)'] = 'colaborador/editar/$1';
+$route['editar/(:num)'] = 'colaboradores/editar/$1';
 
 
 //acessar os colaboradores
@@ -70,5 +70,3 @@ $route['post/(:num)'] = 'pagina/post/$1';
 
 //login
 $route['login'] = 'setup/login';
-
-$route['teste'] = 'colaboradores/teste';

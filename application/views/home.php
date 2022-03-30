@@ -19,6 +19,8 @@
 		?>
 
 			<p><?php echo $value->descricao ?></p>
+			<a href="<?php echo base_url('index.php/editar/'.$value->id);?>">Editar</a>
+			<a href="<?php echo base_url('index.php/post/'. $value->id);?>">Ver</a>
 			<hr>
 
 			<?php }//fim foreach ?>
