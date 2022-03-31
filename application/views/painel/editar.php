@@ -7,6 +7,11 @@
 
 	<h1>Editar colaborador</h1>
 	<?php
+		//mostra a mensagem se houver
+		if($msg = get_msg()){
+			echo '<p>' . $msg .'</p>';
+		}
+		
 		echo form_open();//coneço do form
 		echo form_label('Nome do colaborador','colaborador');
 		echo form_input('colaborador',$colaboradores->nomeColaborador);

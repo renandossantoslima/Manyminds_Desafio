@@ -8,6 +8,11 @@
 	<h1>Tela de cadastro de produtos</h1>
 
 	<?php
+		//mostra a mensagem se houver
+		if($msg = get_msg()){
+			echo '<p>' . $msg .'</p>';
+		}
+		
 		echo form_open();//inicio form
 		//label produto
 		echo form_label('Nome do produto:','produto') . '<br>';

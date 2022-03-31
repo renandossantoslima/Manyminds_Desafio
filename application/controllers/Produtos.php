@@ -24,6 +24,9 @@ class Produtos extends CI_Controller {
 
 	//cadastrar o produto
 	public function cadastrar(){
+		//verifica login
+		//verificalogin();
+
 		//regra de validação
 		$this->form_validation->set_rules('produto','Produto','trim|required');
 		$this->form_validation->set_rules('colaborador','Colaborador','trim|required');
@@ -32,7 +35,7 @@ class Produtos extends CI_Controller {
 		//verifica as verificações
 		if($this->form_validation->run() == False){
 			if(validation_errors()){
-				echo 'Erro(s)<br>' . validation_errors();
+				set_msg(validation_errors());
 			}
 		}else{
 			//informações da pagina
@@ -45,9 +48,9 @@ class Produtos extends CI_Controller {
 
 			//salvar no banco
 			if($id = $this->produtos->inserir($dados_insert)){
-				echo 'Sucesso ao salvar!<br>';
+				set_msg('Sucesso ao salvar!');
 			}else{
-				echo 'Não salvou o produto';
+				set_msg('Não salvou o produto!');
 			}
 		}
 
@@ -68,10 +71,10 @@ class Produtos extends CI_Controller {
 				$dados_update['id'] = $produtos->id;
 				//echo 'Tudo ok';
 			}else{
-				echo 'Não existe o produto com esse id!!!';
+				set_msg('Não existe o produto com esse id!!!');
 			}
 		}else{
-			echo 'Tente de novo!';
+			set_msg('Tente de novo!');
 		}
 
 		//regra de validação
@@ -82,7 +85,7 @@ class Produtos extends CI_Controller {
 		//verifica a validação
 		if($this->form_validation->run() == False){
 			if(validation_errors()){
-				echo 'Erro(s)<br>' . validation_errors();
+				set_msg(validation_errors());
 			}
 		}else{
 			//iformações da pagina
@@ -97,9 +100,9 @@ class Produtos extends CI_Controller {
 			if($linha = $this->produtos->editar($dados_update)){
 				redirect('produtos','refresh');
 			}else if($linha == 0){
-				echo 'Não foi detectado nenhuma alteração!';
+				set_msg('Não foi detectado nenhuma alteração!');
 			}else{
-				echo 'Erro ao atualizar!';
+				set_msg('Erro ao atualizar!');
 			}
 
 		}

@@ -16,5 +16,16 @@ class Usuario_model extends CI_Model {
 		parent::__construct();
 	}
 
+	//verificação no banco
+	public function findOne($dados){
+		$this->db->where('usuario',$dados['usuario']);
+		$this->db->where('senha',$dados['senha']);
+		$query = $this->db->get('usuarios');
+		if($query->num_rows() > 0){
+			return $query->result();
+		}else{
+			return null;
+		}
+	}
 
 }

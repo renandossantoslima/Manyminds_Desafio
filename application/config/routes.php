@@ -76,3 +76,4 @@ $route['editarProdutos/(:num)'] = 'produtos/editar/$1';
 
 //login
 $route['login'] = 'setup/login';
+$route['logout'] = 'setup/logout';

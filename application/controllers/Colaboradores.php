@@ -32,7 +32,7 @@ class Colaboradores extends CI_Controller {
 		//verifica as validações
 		if($this->form_validation->run() == False){
 			if(validation_errors()){
-				echo 'Erro' . validation_errors();
+				set_msg(validation_errors());
 			}
 
 		}else{
@@ -50,11 +50,11 @@ class Colaboradores extends CI_Controller {
 
 			//salvar no banco
 			if($id = $this->colaboradores->inserir($dados_insert)){
-				echo 'Sucesso!!!!!!!';
+				set_msg('Sucesso ao cadastar o colaborador');
 				//redirect('colaboradores','refresh');
 				//var_dump($dados_form);//para ver se está pegando valores
 			}else{
-				echo 'Fracasso!!!';
+				set_msg('Fracasso!!!');
 			}
 
 		}
@@ -77,11 +77,11 @@ class Colaboradores extends CI_Controller {
 				$dados_update['id'] = $colaboradores->id;
 				//echo "tudo certo!!";
 			}else{
-				echo "Não existe colaboradores!!!!";
+				set_msg("Não existe colaboradores!!!!");
 				//redirect('pagina/index','refresh');
 			}
 		}else{
-			echo 'Tente de novo!!!';
+			set_msg('Tente de novo!!!');
 			//redirect('colaboradores/index','refresh');
 		}
 
@@ -97,7 +97,7 @@ class Colaboradores extends CI_Controller {
 		//verifica as validações
 		if($this->form_validation->run() == False){
 			if(validation_errors()){
-				echo 'Erro' . validation_errors();
+				set_msg(validation_errors());
 			}
 
 		}else{
@@ -118,7 +118,7 @@ class Colaboradores extends CI_Controller {
 				//echo "Mudado com sucesso!!!!";
 				redirect(base_url(),'refresh');
 			}else{
-				echo "Falha ao atualizar!!!!";
+				set_msg("Falha ao atualizar!!!!");
 			}
 		}
 

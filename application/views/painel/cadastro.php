@@ -8,6 +8,11 @@
 	<h1>Novo colaborador</h1>
 
 	<?php
+		//mostra a mensagem se houver
+		if($msg = get_msg()){
+			echo '<p>' . $msg .'</p>';
+		}
+		
 		echo form_open();//coneço do form
 		//lael do nome
 		echo form_label('Nome do colaborador','colaborador');
