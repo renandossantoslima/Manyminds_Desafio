@@ -1,7 +1,7 @@
 <?php
 
 /*
-	Responsavel por controlar a tabela de colaboradores (CRUD)
+	Responsavel por controlar a tabela de produtos (CRUD)
 
 */
 
@@ -9,7 +9,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 //o nome dos arquivos e classes devem ser os mesmos
-class Colaboradores_model extends CI_Model {
+class Produtos_model extends CI_Model {
 
 	//construtor constroi tudo o que precisa nos projetos
 	function __construct(){
@@ -18,7 +18,7 @@ class Colaboradores_model extends CI_Model {
 
 	//inserir
 	public function inserir($dados){
-		$this->db->insert('colaboradores',$dados);
+		$this->db->insert('produtos',$dados);
 		return $this->db->insert_id();
 	}
 
@@ -28,7 +28,7 @@ class Colaboradores_model extends CI_Model {
 		$this->db->where('id',$dados['id']);
 		//para não atualizar o id
 		unset($dados['id']);
-		$this->db->update('colaboradores',$dados);
+		$this->db->update('produtos',$dados);
 		return $this->db->affected_rows();
 	}
 
@@ -37,7 +37,7 @@ class Colaboradores_model extends CI_Model {
 		//verifico o limit
 		if($limit == 0){
 			$this->db->order_by('id','desc');
-			$query = $this->db->get('colaboradores');
+			$query = $this->db->get('produtos');
 			if($query->num_rows() > 0){
 				return $query->result();
 			}else{
@@ -50,7 +50,7 @@ class Colaboradores_model extends CI_Model {
 	//Seleciona um resultado
 	public function selectOne($id=0){
 		$this->db->where('id',$id);
-		$query = $this->db->get('colaboradores');
+		$query = $this->db->get('produtos');
 		if($query->num_rows() > 0){
 			$linha = $query->row();
 			return $linha;

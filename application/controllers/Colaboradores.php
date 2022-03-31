@@ -22,6 +22,12 @@ class Colaboradores extends CI_Controller {
 
 		//regras de validação
 		$this->form_validation->set_rules('colaborador','Colaborador','trim|required');
+		$this->form_validation->set_rules('fornecedor', 'Fornecedor','required');
+		$this->form_validation->set_rules('ativo', 'Ativo', 'required');
+		$this->form_validation->set_rules('email', 'Email', 'trim|required|min_length[5]');
+		$this->form_validation->set_rules('cidade', 'Cidade','trim|required');
+		$this->form_validation->set_rules('estado', 'Estado','trim|required');
+		$this->form_validation->set_rules('telefone', 'Telefone','trim|required');
 
 		//verifica as validações
 		if($this->form_validation->run() == False){
@@ -34,7 +40,13 @@ class Colaboradores extends CI_Controller {
 			$dados_form = $this->input->post();
 
 			//um array para inserir na tabela
-			$dados_insert['descricao'] = $dados_form['colaborador'];
+			$dados_insert['nomeColaborador'] = $dados_form['colaborador'];
+			$dados_insert['fornecedor'] = $dados_form['fornecedor'];
+			$dados_insert['ativo'] = $dados_form['ativo'];
+			$dados_insert['email'] = $dados_form['email'];
+			$dados_insert['cidade'] = $dados_form['cidade'];
+			$dados_insert['estado'] = $dados_form['estado'];
+			$dados_insert['telefone'] = $dados_form['telefone'];
 
 			//salvar no banco
 			if($id = $this->colaboradores->inserir($dados_insert)){
@@ -59,7 +71,7 @@ class Colaboradores extends CI_Controller {
 		//varifica se foi passado o id
 		$id = $this->uri->segment(2);
 		if($id > 0){
-			//id informado, continuar co editar
+			//id informado, continuar com editar
 			if($colaboradores = $this->colaboradores->selectOne($id)){
 				$dados['colaboradores'] = $colaboradores;
 				$dados_update['id'] = $colaboradores->id;
@@ -75,6 +87,12 @@ class Colaboradores extends CI_Controller {
 
 		//regras de validação
 		$this->form_validation->set_rules('colaborador','Colaborador','trim|required');
+		$this->form_validation->set_rules('fornecedor', 'Fornecedor','required');
+		$this->form_validation->set_rules('ativo', 'Ativo', 'required');
+		$this->form_validation->set_rules('email', 'Email', 'trim|required|min_length[5]');
+		$this->form_validation->set_rules('cidade', 'Cidade','trim|required');
+		$this->form_validation->set_rules('estado', 'Estado','trim|required');
+		$this->form_validation->set_rules('telefone', 'Telefone','trim|required');
 
 		//verifica as validações
 		if($this->form_validation->run() == False){
@@ -87,11 +105,18 @@ class Colaboradores extends CI_Controller {
 			$dados_form = $this->input->post();
 
 			//um array para iserir na tabela
-			$dados_update['descricao'] = $dados_form['colaborador'];
+			$dados_update['nomeColaborador'] = $dados_form['colaborador'];
+			$dados_update['fornecedor'] = $dados_form['fornecedor'];
+			$dados_update['ativo'] = $dados_form['ativo'];
+			$dados_update['email'] = $dados_form['email'];
+			$dados_update['cidade'] = $dados_form['cidade'];
+			$dados_update['estado'] = $dados_form['estado'];
+			$dados_update['telefone'] = $dados_form['telefone'];
 
 			//salvar no banco
 			if($this->colaboradores->editar($dados_update)){
-				echo "Mudado com sucesso!!!!";
+				//echo "Mudado com sucesso!!!!";
+				redirect(base_url(),'refresh');
 			}else{
 				echo "Falha ao atualizar!!!!";
 			}

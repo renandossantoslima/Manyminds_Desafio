@@ -8,6 +8,8 @@
 
 	<h1>Home</h1>
 
+	<h3>Colaboradores</h3>
+
 	<?php	
 		//mostrar os colaboradores
 		if(isset($colaboradores) && sizeof($colaboradores) > 0){
@@ -18,7 +20,7 @@
 			foreach ($colaboradores as $key => $value) {//inicio foreach
 		?>
 
-			<p><?php echo $value->descricao ?></p>
+			<p><?php echo $value->nomeColaborador ?></p>
 			<a href="<?php echo base_url('index.php/editar/'.$value->id);?>">Editar</a>
 			<a href="<?php echo base_url('index.php/post/'. $value->id);?>">Ver</a>
 			<hr>

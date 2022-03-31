@@ -37,7 +37,7 @@ class Pagina extends CI_Controller {
 		$id = $this->uri->segment(2);
 		if($id > 0){
 			if($colaboradores = $this->colaboradores->selectOne($id)){
-				$dados['colaboradores'] = $colaboradores->descricao;
+				$dados['colaboradores'] = $colaboradores;
 			}else{
 				$dados['colaboradores'] = 'Não encontrado';
 			}

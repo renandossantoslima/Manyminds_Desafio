@@ -6,7 +6,7 @@
 ?>
 
 	<h1>Pagina post</h1>
-	<p><?php echo $colaboradores; ?></p>
+	<p><?php echo $colaboradores->nomeColaborador; ?></p>
 
 
 <?php

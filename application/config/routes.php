@@ -68,5 +68,11 @@ $route['post'] = 'pagina';
 
 $route['post/(:num)'] = 'pagina/post/$1';
 
+//produtos
+$route['produtos'] = 'produtos';
+$route['cadastroProdutos'] = 'produtos/cadastrar';
+$route['editarProdutos'] = 'produtos/editar';
+$route['editarProdutos/(:num)'] = 'produtos/editar/$1';
+
 //login
 $route['login'] = 'setup/login';
