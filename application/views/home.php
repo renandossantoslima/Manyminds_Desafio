@@ -10,7 +10,12 @@
 
 	<h3>Colaboradores</h3>
 
-	<?php	
+	<?php
+		//mostra a mensagem se houver
+		if($msg = get_msg()){
+			echo '<p>' . $msg .'</p>';
+		}
+
 		//mostrar os colaboradores
 		if(isset($colaboradores) && sizeof($colaboradores) > 0){
 	?>
@@ -20,12 +25,29 @@
 			foreach ($colaboradores as $key => $value) {//inicio foreach
 		?>
 
-			<p><?php echo $value->nomeColaborador ?></p>
-			<a href="<?php echo base_url('index.php/editar/'.$value->id);?>">Editar</a>
-			<a href="<?php echo base_url('index.php/post/'. $value->id);?>">Ver</a>
-			<hr>
+				<?php
+					if($value->ativo == 0){//inicio de if ativo
+				?>
 
-			<?php }//fim foreach ?>
+					<p><?php echo $value->nomeColaborador ?></p>
+					<a href="<?php echo base_url('index.php/post/'. $value->id);?>">Ver</a>
+					<a href="<?php echo base_url('index.php/verificacaoColaboradores/'. $value->id);?>">Reativar</a>
+					<hr>
+
+				<?php
+					}else{
+				?>
+
+					<p><?php echo $value->nomeColaborador ?></p>
+					<a href="<?php echo base_url('index.php/editar/'.$value->id);?>">Editar</a>
+					<a href="<?php echo base_url('index.php/post/'. $value->id);?>">Ver</a>
+					<a href="<?php echo base_url('index.php/verificacaoColaboradores/'. $value->id);?>">Inativar</a>
+					<hr>
+
+				<?php } ?>
+
+
+		<?php }//fim foreach ?>
 
 	<?php }else{
 			echo 'Nenhum colaborador!';

@@ -61,6 +61,8 @@ $route['sobre'] = 'pagina/sobre';
 $route['cadastro'] = 'colaboradores/cadastrar';
 $route['editar'] = 'colaboradores/editar';
 $route['editar/(:num)'] = 'colaboradores/editar/$1';
+$route['verificacaoColaboradores'] = 'colaboradores';
+$route['verificacaoColaboradores/(:num)'] = 'colaboradores/verificacaoColaboradores/$1';
 
 
 //acessar os colaboradores
@@ -73,6 +75,8 @@ $route['produtos'] = 'produtos';
 $route['cadastroProdutos'] = 'produtos/cadastrar';
 $route['editarProdutos'] = 'produtos/editar';
 $route['editarProdutos/(:num)'] = 'produtos/editar/$1';
+$route['verificacaoProdutos'] = 'produtos';
+$route['verificacaoProdutos/(:num)'] = 'produtos/verificacaoProdutos/$1';
 
 //login
 $route['login'] = 'setup/login';

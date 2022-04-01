@@ -62,7 +62,7 @@ class Produtos extends CI_Controller {
 
 	//editar produto
 	public function editar(){
-		//verificar se foi passao o id
+		//verificar se foi passado o id
 		$id = $this->uri->segment(2);
 		if($id > 0){
 			//id verificado, continuar com editar
@@ -98,6 +98,7 @@ class Produtos extends CI_Controller {
 
 			//salva no banco
 			if($linha = $this->produtos->editar($dados_update)){
+				set_msg('Produto editado com sucesso!');
 				redirect('produtos','refresh');
 			}else if($linha == 0){
 				set_msg('Não foi detectado nenhuma alteração!');
@@ -113,4 +114,47 @@ class Produtos extends CI_Controller {
 		//cham a view
 		$this->load->view('painel/editarProd',$dados);
 	}
+
+	//alteração de ativo/inativo
+	public function verificacaoProdutos(){
+		//verifica se foi passdo o id
+		$id = $this->uri->segment(2);
+		if($id > 0){
+			//id verificado, continuar com verificacaoProdutos
+			if($produto = $this->produtos->selectOne($id)){
+				$dados_update['id'] = $produto->id;
+				$dados_update['produto'] = $produto->produto;
+				$ativo = $produto->ativo;
+				//echo 'tudo ok ' . $produto->id . '-' . $produto->ativo;
+			}else{
+				echo 'Não foi encontrado o produto com esse id!';
+			}
+			
+		}else{
+			echo 'Tente de novo';
+		}
+
+		//mudança de ativo
+		if($ativo == 0){
+			$dados_update['ativo'] = 1;
+			//faz a edição no banco de ativo
+			if($linha = $this->produtos->editar($dados_update)){
+				set_msg('Produto ' . $dados_update['produto'] . ' reativado');
+				redirect('produtos','refresh');
+			}else{
+				set_msg('Falha ao alterar!');
+			}
+		}else{
+			$dados_update['ativo'] = 0;
+			//faz a edição no banco de ativo
+			if($linha = $this->produtos->editar($dados_update)){
+				set_msg('Produto ' .$dados_update['produto'] . ' inativado');
+				redirect('produtos','refresh');
+			}else{
+				set_msg('Falha ao alterar!');
+			}
+		}
+
+	}
+
 }

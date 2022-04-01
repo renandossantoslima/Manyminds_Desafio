@@ -128,4 +128,46 @@ class Colaboradores extends CI_Controller {
 		$this->load->view('painel/editar',$dados);
 	}
 
+	//verifica se está ativo
+	public function verificacaoColaboradores(){
+		//verifica se foi passdo o id
+		$id = $this->uri->segment(2);
+		if($id > 0){
+			//id verificado, continuar com verificacaoProdutos
+			if($colaboradores = $this->colaboradores->selectOne($id)){
+				$dados_update['id'] = $colaboradores->id;
+				$dados_update['nomeColaborador'] = $colaboradores->nomeColaborador;
+				$ativo = $colaboradores->ativo;
+				//echo 'tudo ok ' . $produto->id . '-' . $produto->ativo;
+			}else{
+				echo 'Não foi encontrado o produto com esse id!';
+			}
+			
+		}else{
+			echo 'Tente de novo';
+		}
+
+		//mudança de ativo
+		if($ativo == 0){
+			$dados_update['ativo'] = 1;
+			//faz a edição no banco de ativo
+			if($linha = $this->colaboradores->editar($dados_update)){
+				set_msg('Colaborador ' . $dados_update['nomeColaborador'] . ' reativado');
+				redirect(base_url(),'refresh');
+			}else{
+				set_msg('Falha ao alterar!');
+			}
+		}else{
+			$dados_update['ativo'] = 0;
+			//faz a edição no banco de ativo
+			if($linha = $this->colaboradores->editar($dados_update)){
+				set_msg('Colaborador ' .$dados_update['nomeColaborador'] . ' inativado');
+				redirect(base_url(),'refresh');
+			}else{
+				set_msg('Falha ao alterar!');
+			}
+		}
+;
+	}
+
 }

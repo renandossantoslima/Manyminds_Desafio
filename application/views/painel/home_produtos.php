@@ -10,6 +10,11 @@
 
 	<h3>Produtos</h3>
 	<?php
+		//mostra a mensagem se houver
+		if($msg = get_msg()){
+			echo '<p>' . $msg .'</p>';
+		}
+		
 		if(isset($produtos) && sizeof($produtos) > 0){
 	?>
 
@@ -17,9 +22,23 @@
 			foreach ($produtos as $key => $value) {//inicio foreach
 				
 		?>
-			<p><?php echo $value->produto;?></p>
-			<a href="<?php echo base_url('index.php/editarProdutos/' . $value->id);?>">Editar</a>
-			<hr>
+
+				<?php 
+					if($value->ativo == 0){//inicio do if ativo
+				?>
+						<p><?php echo $value->produto;?></p>
+						<a href="<?php echo base_url('index.php/verificacaoProdutos/' . $value->id);?>">Reativar</a>
+						<hr>
+
+				<?php
+					}else{
+				?>
+						<p><?php echo $value->produto;?></p>
+						<a href="<?php echo base_url('index.php/editarProdutos/' . $value->id);?>">Editar</a>
+						<a href="<?php echo base_url('index.php/verificacaoProdutos/' . $value->id);?>">Inativar</a>
+						<hr>
+
+				<?php } ?>
 
 		<?php }//fim foreach ?>
 
