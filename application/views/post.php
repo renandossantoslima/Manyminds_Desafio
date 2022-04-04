@@ -5,8 +5,10 @@
 
 ?>
 
-	<h1>Pagina post</h1>
-	<p><?php echo $colaboradores->nomeColaborador; ?></p>
+	<div class="margin">
+		<h1 class="alinhamento">Pagina post</h1>
+		<p><?php echo $colaboradores->nomeColaborador; ?></p>
+	</div>
 
 
 <?php

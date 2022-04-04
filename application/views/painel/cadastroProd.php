@@ -5,31 +5,34 @@
 
 ?>
 
-	<h1>Tela de cadastro de produtos</h1>
+	
+	<div class="margin">
+	<h1 class="alinhamento">Tela de cadastro de produtos</h1>
 
 	<?php
 		//mostra a mensagem se houver
 		if($msg = get_msg()){
-			echo '<p>' . $msg .'</p>';
+			echo '<p>' . $msg .'<p>';
 		}
 
 		echo form_open();//inicio form
 		//label produto
-		echo form_label('Nome do produto:','produto') . '<br>';
-		echo form_input('produto') . '<br>';
+		echo '<p>' . form_label('Nome do produto:','produto') . '<p>';
+		echo form_input('produto','',array('class' => 'campo')) . '<br>';
 
 		//label colaborador
-		echo form_label('Nome do colaborador','colaborador') . '<br>';
-		echo form_input('colaborador') . '<br>';
+		echo '<p>' . form_label('Nome do colaborador:','colaborador') . '<p>';
+		echo form_input('colaborador','',array('class' => 'campo')) . '<br>';
 
 		//label ativo
-		echo form_label('Está ativo:') . '<br>';
+		echo '<p>' . form_label('Está ativo:') . '<p>';
 		echo form_radio('ativo',0) . 'Não';
 		echo form_radio('ativo',1) . 'Sim<br>';
 
-		echo form_submit('enviar','Salvar');
+		echo form_submit('enviar','Salvar',array('class' => 'botao'));
 		echo form_close();//fim form
 	?>
+	</div>
 
 <?php
 	//chama a minha view rodape

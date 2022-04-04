@@ -19,6 +19,8 @@ class Colaboradores extends CI_Controller {
 
 	//acessa a pagina cadastro colaboradores
 	public function cadastrar(){
+		//verifica login
+		verificalogin();
 
 		//regras de validação
 		$this->form_validation->set_rules('colaborador','Colaborador','trim|required');
@@ -67,6 +69,8 @@ class Colaboradores extends CI_Controller {
 
 	//acessar a pagina editar colaboradores
 	public function editar(){
+		//verifica login
+		verificalogin();
 
 		//varifica se foi passado o id
 		$id = $this->uri->segment(2);
@@ -77,11 +81,13 @@ class Colaboradores extends CI_Controller {
 				$dados_update['id'] = $colaboradores->id;
 				//echo "tudo certo!!";
 			}else{
-				set_msg("Não existe colaboradores!!!!");
+				set_msg("Não existe colaboradores com esse id!!!!");
+				redirect(base_url(),'refresh');
 				//redirect('pagina/index','refresh');
 			}
 		}else{
 			set_msg('Tente de novo!!!');
+			redirect(base_url(),'refresh');
 			//redirect('colaboradores/index','refresh');
 		}
 
@@ -114,9 +120,11 @@ class Colaboradores extends CI_Controller {
 			$dados_update['telefone'] = $dados_form['telefone'];
 
 			//salvar no banco
-			if($this->colaboradores->editar($dados_update)){
+			if($linha = $this->colaboradores->editar($dados_update)){
 				//echo "Mudado com sucesso!!!!";
 				redirect(base_url(),'refresh');
+			}else if($linha == 0){
+				set_msg("Não foi detectado nenhuma alteração!");
 			}else{
 				set_msg("Falha ao atualizar!!!!");
 			}
@@ -130,6 +138,9 @@ class Colaboradores extends CI_Controller {
 
 	//verifica se está ativo
 	public function verificacaoColaboradores(){
+		//verifica login
+		verificalogin();
+
 		//verifica se foi passdo o id
 		$id = $this->uri->segment(2);
 		if($id > 0){
@@ -167,7 +178,7 @@ class Colaboradores extends CI_Controller {
 				set_msg('Falha ao alterar!');
 			}
 		}
-;
+
 	}
 
 }

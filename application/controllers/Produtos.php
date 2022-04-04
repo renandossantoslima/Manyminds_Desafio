@@ -14,6 +14,9 @@ class Produtos extends CI_Controller {
 	}
 
 	public function index(){
+		//verifica login
+		verificalogin();
+		
 		//titulo dinamico
 		$dados['titulo'] = 'Produtos - Manyminds';
 		//pega as informações do banco
@@ -25,7 +28,7 @@ class Produtos extends CI_Controller {
 	//cadastrar o produto
 	public function cadastrar(){
 		//verifica login
-		//verificalogin();
+		verificalogin();
 
 		//regra de validação
 		$this->form_validation->set_rules('produto','Produto','trim|required');
@@ -62,6 +65,9 @@ class Produtos extends CI_Controller {
 
 	//editar produto
 	public function editar(){
+		//verifica login
+		verificalogin();
+
 		//verificar se foi passado o id
 		$id = $this->uri->segment(2);
 		if($id > 0){
@@ -117,6 +123,9 @@ class Produtos extends CI_Controller {
 
 	//alteração de ativo/inativo
 	public function verificacaoProdutos(){
+		//verifica login
+		verificalogin();
+
 		//verifica se foi passdo o id
 		$id = $this->uri->segment(2);
 		if($id > 0){

@@ -1,31 +1,39 @@
-<?php 
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><?php echo $titulo; ?></title>
+		<meta content-type='text/html' charset="utf-8">
 
-	//carrhga a minha view topo
-	$this->load->view('topo');
+		<!-- CSS -->
+		<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/estilo.css');?>">
 
-?>
+		<!--Bootstrap -->
+		<!--link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"-->
+	</head>
+	<body>
+	
+	<div class="alinhamento">
+		<h1>Login</h1>
 
-	<h1>Login</h1>
+		<?php
+			//mostra a mensagem se houver
+			if($msg = get_msg()){
+				echo '<p>' . $msg .'</p>';
+			}
 
-	<?php
-		//mostra a mensagem se houver
-		if($msg = get_msg()){
-			echo '<p>' . $msg .'</p>';
-		}
+			echo form_open();//inicio form
+			//label produto
+			echo form_label('Nome de usuario','usuario') . '<br>';
+			echo form_input('usuario','',array('class' => 'campo')) . '<br>';
 
-		echo form_open();//inicio form
-		//label produto
-		echo form_label('Nome de usuario','usuario') . '<br>';
-		echo form_input('usuario') . '<br>';
+			//label colaborador
+			echo form_label('Senha','senha') . '<br>';
+			echo form_input('senha','',array('class' => 'campo')) . '<br>';
 
-		//label colaborador
-		echo form_label('Senha','senha') . '<br>';
-		echo form_input('senha') . '<br>';
-
-		echo form_submit('enviar','Entrar');
-		echo form_close();//fim form
-	?>
-
+			echo form_submit('enviar','Entrar',array('class' => 'botao'));
+			echo form_close();//fim form
+		?>
+	</div>
 
 <?php
 	//chama a minha view rodape

@@ -21,7 +21,7 @@ class Pagina extends CI_Controller {
 		//pega as informações do banco
 		$dados['colaboradores'] = $this->colaboradores->selectAll();
 		//chama a view principal
-		$this->load->view('home',$dados);
+		$this->load->view('painel/home',$dados);
 	}
 
 	//para acessar uma pagina sobre

@@ -4,11 +4,11 @@
 	$this->load->view('topo');
 
 ?>
-
-	<h1>Tela produtos</h1>
+	<div class="margin">
+	<h1 class="alinhamento">Produtos</h1>
+	
 	<a href="<?php echo base_url('index.php/cadastroProdutos')?>">Novo produto</a>
 
-	<h3>Produtos</h3>
 	<?php
 		//mostra a mensagem se houver
 		if($msg = get_msg()){
@@ -45,7 +45,7 @@
 	<?php }else{
 			echo 'Nenhum produto!';
 	}?>
-
+	</div>
 <?php
 	//chama a minha view rodape
 	$this->load->view('rodape');

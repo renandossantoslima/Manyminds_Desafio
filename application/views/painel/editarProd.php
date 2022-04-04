@@ -4,8 +4,8 @@
 	$this->load->view('topo');
 
 ?>
-
-	<h1>Tela de cadastro de produtos</h1>
+	<div class="margin">
+	<h1 class="alinhamento">Tela de cadastro de produtos</h1>
 
 	<?php
 		//mostra a mensagem se houver
@@ -15,15 +15,15 @@
 		
 		echo form_open();//inicio form
 		//label produto
-		echo form_label('Nome do produto:','produto') . '<br>';
-		echo form_input('produto',$produto->produto) . '<br>';
+		echo '<p>' . form_label('Nome do produto:','produto') . '<p>';
+		echo form_input('produto',$produto->produto,array('class' => 'campo')) . '<br>';
 
 		//label colaborador
-		echo form_label('Nome do colaborador','colaborador') . '<br>';
-		echo form_input('colaborador',$produto->colaborador) . '<br>';
+		echo '<p>' . form_label('Nome do colaborador','colaborador') . '<p>';
+		echo form_input('colaborador',$produto->colaborador,array('class' => 'campo')) . '<br>';
 
 		//label ativo
-		echo form_label('Está ativo:') . '<br>';
+		echo '<p>' . form_label('Está ativo:') . '<p>';
 		if($produto->ativo == 0){
 			echo form_radio('ativo',0,'checked') . 'Não';
 			echo form_radio('ativo',1) . 'Sim<br>';
@@ -32,10 +32,10 @@
 			echo form_radio('ativo',1,'checked') . 'Sim<br>';
 		}
 
-		echo form_submit('enviar','Salvar');
+		echo form_submit('enviar','Salvar',array('class' => 'botao'));
 		echo form_close();//fim form
 	?>
-
+	</div>
 <?php
 	//chama a minha view rodape
 	$this->load->view('rodape');

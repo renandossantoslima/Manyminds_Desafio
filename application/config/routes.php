@@ -81,3 +81,7 @@ $route['verificacaoProdutos/(:num)'] = 'produtos/verificacaoProdutos/$1';
 //login
 $route['login'] = 'setup/login';
 $route['logout'] = 'setup/logout';
+
+
+//tetse
+//$route['teste'] = 'pagina/teste';
