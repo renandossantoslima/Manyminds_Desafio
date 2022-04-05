@@ -5,7 +5,7 @@
 
 ?>
 
-	<div class="margin">
+	<div class="margin alinhamento">
 		<h1 class="alinhamento">Novo colaborador</h1>
 
 		<?php

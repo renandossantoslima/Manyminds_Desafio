@@ -26,7 +26,7 @@ class Colaboradores extends CI_Controller {
 		$this->form_validation->set_rules('colaborador','Colaborador','trim|required');
 		$this->form_validation->set_rules('fornecedor', 'Fornecedor','required');
 		$this->form_validation->set_rules('ativo', 'Ativo', 'required');
-		$this->form_validation->set_rules('email', 'Email', 'trim|required|min_length[5]');
+		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|min_length[5]');
 		$this->form_validation->set_rules('cidade', 'Cidade','trim|required');
 		$this->form_validation->set_rules('estado', 'Estado','trim|required');
 		$this->form_validation->set_rules('telefone', 'Telefone','trim|required');
@@ -180,5 +180,6 @@ class Colaboradores extends CI_Controller {
 		}
 
 	}
+	
 
 }
