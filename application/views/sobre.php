@@ -5,7 +5,11 @@
 
 ?>
 
-<h1>Sobre principal</h1>
+	<div class="alinhamento">
+		<h1>Sobre Projeto</h1>
+		<span>É um desafio da Manyminds.</span>
+	</div>
+	
 
 
 <?php

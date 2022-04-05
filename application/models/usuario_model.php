@@ -16,6 +16,12 @@ class Usuario_model extends CI_Model {
 		parent::__construct();
 	}
 
+	//inserir
+	public function inserir($dados){
+		$this->db->insert('usuarios',$dados);
+		return true;
+	}
+
 	//verificação no banco
 	public function findOne($dados){
 		$this->db->where('usuario',$dados['usuario']);

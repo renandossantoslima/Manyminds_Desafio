@@ -50,7 +50,7 @@ class Setup extends CI_Controller {
 				//tudo certo
 				$this->session->set_userdata('logged',True);
 				$this->session->set_userdata('user_login',$dados_form['usuario']);
-				redirect('pagina','refresh');
+				redirect(base_url(),'refresh');
 			}
 			
 		}

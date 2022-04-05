@@ -8,7 +8,7 @@ class Pagina extends CI_Controller {
 	//construtor constroi tudo o que precisa nos projetos
 	function __construct(){
 		parent::__construct();
-		$this->load->helper('url');//carrega em todo o controller 
+		$this->load->helper('form');//carrega em todo o controller 
 		$this->load->model('colaboradores_model','colaboradores');
 	}
 
@@ -50,5 +50,13 @@ class Pagina extends CI_Controller {
 		//chama view
 		$this->load->view('post',$dados);
 		
+	}
+
+	//para acessar uma pagina sobre
+	public function teste(){
+		//titulo dinamico
+		$dados['titulo'] = 'Sobre - Manyminds';
+		//chama a view
+		$this->load->view('sobre',$dados);
 	}
 }

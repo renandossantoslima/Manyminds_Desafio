@@ -1,0 +1,3 @@
+Quando for executar o projeto você tem qua alterar uma das duas coisas:
+---Colocar a pasta "system" fora da pasta do projeto;
+---Ou alterar no arquivo 'index.php' que esta dentro de application onde está "$system_path = '../system';" para $system_path = 'system';

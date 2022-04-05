@@ -5,46 +5,46 @@
 
 ?>
 	<div class="margin">
-	<h1 class="alinhamento">Produtos</h1>
-	
-	<a href="<?php echo base_url('index.php/cadastroProdutos')?>">Novo produto</a>
-
-	<?php
-		//mostra a mensagem se houver
-		if($msg = get_msg()){
-			echo '<p>' . $msg .'</p>';
-		}
+		<h1 class="alinhamento">Produtos</h1>
 		
-		if(isset($produtos) && sizeof($produtos) > 0){
-	?>
+		<a href="<?php echo base_url('index.php/cadastroProdutos')?>">Novo produto</a>
 
 		<?php
-			foreach ($produtos as $key => $value) {//inicio foreach
-				
+			//mostra a mensagem se houver
+			if($msg = get_msg()){
+				echo '<p>' . $msg .'</p>';
+			}
+			
+			if(isset($produtos) && sizeof($produtos) > 0){
 		?>
 
-				<?php 
-					if($value->ativo == 0){//inicio do if ativo
-				?>
-						<p><?php echo $value->produto;?></p>
-						<a href="<?php echo base_url('index.php/verificacaoProdutos/' . $value->id);?>">Reativar</a>
-						<hr>
+			<?php
+				foreach ($produtos as $key => $value) {//inicio foreach
+					
+			?>
 
-				<?php
-					}else{
-				?>
-						<p><?php echo $value->produto;?></p>
-						<a href="<?php echo base_url('index.php/editarProdutos/' . $value->id);?>">Editar</a>
-						<a href="<?php echo base_url('index.php/verificacaoProdutos/' . $value->id);?>">Inativar</a>
-						<hr>
+					<?php 
+						if($value->ativo == 0){//inicio do if ativo
+					?>
+							<p><?php echo $value->produto;?> (inativo)</p>
+							<a href="<?php echo base_url('index.php/verificacaoProdutos/' . $value->id);?>">Reativar</a>
+							<hr>
 
-				<?php } ?>
+					<?php
+						}else{
+					?>
+							<p><?php echo $value->produto;?></p>
+							<a href="<?php echo base_url('index.php/editarProdutos/' . $value->id);?>">Editar</a>
+							<a href="<?php echo base_url('index.php/verificacaoProdutos/' . $value->id);?>">Inativar</a>
+							<hr>
 
-		<?php }//fim foreach ?>
+					<?php } ?>
 
-	<?php }else{
-			echo 'Nenhum produto!';
-	}?>
+			<?php }//fim foreach ?>
+
+		<?php }else{
+				echo 'Nenhum produto!';
+		}?>
 	</div>
 <?php
 	//chama a minha view rodape

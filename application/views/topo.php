@@ -15,6 +15,7 @@
 	<ul>
 		<li><a href="<?php echo base_url();?>">Home</a></li>
 		<li><a href="<?php echo base_url('index.php/produtos');?>">Produtos</a></li>
+		<li><a href="<?php echo base_url('index.php/cadUsuario');?>">Usuarios</a></li>
 		<li><a href="<?php echo base_url('index.php/sobre');?>">Sobre</a></li>
 		<li style="float: right;"><a href="<?php echo base_url('index.php/logout');?>">Sair</a></li>
 	</ul>

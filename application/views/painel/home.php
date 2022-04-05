@@ -16,7 +16,7 @@
 	<div class="margin"><!--inicio margin -->
 		<h1 class="alinhamento">Colaboradores</h1>
 
-		<a href="<?php echo base_url('index.php/cadastro')?>">Novo colaborador</a>
+		<a href="<?php echo base_url('index.php/cadastro')?>">Novo colaborador</a><br>
 
 		<?php
 			//mostra a mensagem se houver
@@ -37,8 +37,8 @@
 						if($value->ativo == 0){//inicio de if ativo
 					?>
 
-						<p><?php echo $value->nomeColaborador ?></p>
-						<a href="<?php echo base_url('index.php/post/'. $value->id);?>">Ver |</a>
+						<p><?php echo $value->nomeColaborador ?> (inativo)</p>
+						<a href="<?php echo base_url('index.php/post/'. $value->id);?>">Informações |</a>
 						<a href="<?php echo base_url('index.php/verificacaoColaboradores/'. $value->id);?>">Reativar</a>
 						<hr>
 
@@ -48,7 +48,7 @@
 
 						<p><?php echo $value->nomeColaborador ?></p>
 						<a href="<?php echo base_url('index.php/editar/'.$value->id);?>">Editar |</a>
-						<a href="<?php echo base_url('index.php/post/'. $value->id);?>">Ver |</a>
+						<a href="<?php echo base_url('index.php/post/'. $value->id);?>">Informações |</a>
 						<a href="<?php echo base_url('index.php/verificacaoColaboradores/'. $value->id);?>">Inativar</a>
 						<hr>
 

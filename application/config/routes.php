@@ -78,6 +78,9 @@ $route['editarProdutos/(:num)'] = 'produtos/editar/$1';
 $route['verificacaoProdutos'] = 'produtos';
 $route['verificacaoProdutos/(:num)'] = 'produtos/verificacaoProdutos/$1';
 
+//usuario
+$route['cadUsuario'] = 'usuarios/cadastrar'; 
+
 //login
 $route['login'] = 'setup/login';
 $route['logout'] = 'setup/logout';
