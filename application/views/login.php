@@ -33,7 +33,7 @@
 			echo form_submit('enviar','Entrar',array('class' => 'botao'));
 			echo form_close();//fim form
 		?>
-		<span>Obs: Se você não tiver um usuario cadastrado tem pedir que para o administrador que faça o seu cadastro.</span>
+		<span>Obs: Se você não tiver um usuario cadastrado tem que pedir para o administrador que faça o seu cadastro.</span>
 	</div>
 
 <?php
